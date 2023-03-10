@@ -19,6 +19,11 @@ app.use(morgan('combined'));
 app.use(helmet());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiSpecification));
 routes(app);
+app.get('/', (req, res) => {
+    return res.status(200).json({
+        message: 'Welcome to server',
+    });
+});
 app.listen(port, () => {
     console.log('Serving running on http://localhost:%d', port);
 });

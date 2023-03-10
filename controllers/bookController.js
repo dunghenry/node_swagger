@@ -48,7 +48,25 @@ class bookController {
         }
     }
     static async updateBook(req, res) {
+        const { id } = req.params;
+        const { title, author } = req.body;
         try {
+            const updateBook = await Book.findByIdAndUpdate(
+                id,
+                {
+                    author: author,
+                    title: title,
+                },
+                {
+                    new: true,
+                },
+            );
+            if (!updateBook?._id) {
+                return res.status(404).json({
+                    message: 'Book not found',
+                });
+            }
+            return res.status(200).json(updateBook?._doc);
         } catch (error) {
             return res.status(500).json({
                 message: error?.message,
@@ -56,7 +74,17 @@ class bookController {
         }
     }
     static async deleteBook(req, res) {
+        const { id } = req.params;
         try {
+            const deleteBook = await Book.deleteOne({ _id: id });
+            if (deleteBook?.deletedCount === 0) {
+                return res.status(404).json({
+                    message: 'Book not found',
+                });
+            }
+            return res.status(200).json({
+                message: 'Book deleted successfully',
+            });
         } catch (error) {
             return res.status(500).json({
                 message: error?.message,

@@ -23,9 +23,6 @@ const router = Router();
  *       example:
  *         title: De Men Phieu Luu Ky
  *         author: To Hoai
- *         createdAt": "2023-03-10T15:07:53.540Z"
- *         updatedAt": "2023-03-10T15:07:53.540Z"
- *         __v: 0
  */
 /**
  * @swagger
