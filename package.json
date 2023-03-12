@@ -23,6 +23,7 @@
         "swagger-ui-express": "^4.6.2"
     },
     "devDependencies": {
+        "@babel/core": "^7.21.0",
         "@babel/preset-env": "^7.20.2",
         "babel-loader": "^9.1.2",
         "colors": "^1.4.0",
